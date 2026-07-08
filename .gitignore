@@ -1,1 +1,2 @@
-data/fact_sales_sample.csv .env
+data/fact_sales_sample.csv 
+.env
