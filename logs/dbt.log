@@ -1,0 +1,30 @@
+[0m16:12:25.106285 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001681C72E7E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001681C72EA80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001681BCD8860>]}
+
+
+============================== 16:12:25.164866 | ec3becf5-8397-441f-ac6a-f3a58fd49ec9 ==============================
+[0m16:12:25.164866 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:12:25.165842 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Preeti\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt init retail_transforms', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m16:12:25.577029 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\Preeti\.dbt
+[0m16:12:25.584450 [debug] [MainThread]: Starter project path: E:\Project-1\portfolio\Lib\site-packages\dbt\include\starter_project
+[0m16:12:25.638771 [info ] [MainThread]: 
+Your new dbt project "retail_transforms" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:12:25.638771 [info ] [MainThread]: Setting up your profile.
+[0m16:15:40.335434 [info ] [MainThread]: No sample profile found for synapse.
+[0m16:15:40.336434 [debug] [MainThread]: Command `dbt init` succeeded at 16:15:40.336434 after 195.52 seconds
+[0m16:15:40.337514 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000168196AE420>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001681E848140>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001681A28EBD0>]}
+[0m16:15:40.337514 [debug] [MainThread]: Flushing usage events
+[0m16:15:40.985706 [debug] [MainThread]: An error was encountered while trying to flush usage events

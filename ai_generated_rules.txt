@@ -1,0 +1,60 @@
+# Data Quality Rules for `fact_sales` Table
+
+Based on the schema analysis, here are 15 specific data quality rules:
+
+---
+
+## Null Checks
+1. **NULL_001**: `Invoice` must NOT be null (primary transaction identifier required for all sales records)
+
+2. **NULL_002**: `Customer_ID` must NOT be null for non-cancelled invoices (essential for customer analytics; current float64 type suggests potential null handling issues)
+
+3. **NULL_003**: `StockCode` must NOT be null (required to link to product dimension)
+
+---
+
+## Range Checks
+4. **RANGE_001**: `Price` must be >= 0 (unit price cannot be negative; zero allowed for promotional items)
+
+5. **RANGE_002**: `Quantity` must be between -1000 and 10000 (negative values indicate returns; extreme values suggest data entry errors)
+
+6. **RANGE_003**: `InvoiceDate` must be within valid business period (between '2009-01-01' and CURRENT_DATE; no future dates allowed)
+
+7. **RANGE_004**: `Revenue` must be within range -100000 to 1000000 (outliers beyond this suggest calculation errors or data corruption)
+
+---
+
+## Uniqueness Checks
+8. **UNIQUE_001**: Combination of `Invoice` + `StockCode` should be unique per line item (no duplicate products on same invoice line)
+
+9. **UNIQUE_002**: `Invoice` values should follow sequential or defined pattern with no unexpected gaps exceeding 1000
+
+---
+
+## Referential Integrity
+10. **REF_001**: `Customer_ID` must exist in `dim_customer` table (orphan records indicate missing master data)
+
+11. **REF_002**: `StockCode` must exist in `dim_product` table (all products sold must be in product master)
+
+12. **REF_003**: `Country` must exist in `dim_geography` or match ISO country standard list
+
+---
+
+## Business Logic Rules
+13. **BUS_001**: `Revenue` must equal `Quantity × Price` (tolerance ±0.01 for rounding; formula: `ABS(Revenue - (Quantity * Price)) <= 0.01`)
+
+14. **BUS_002**: Cancelled invoices (typically starting with 'C' prefix when cast to string) must have negative `Quantity` and negative `Revenue` values
+
+15. **BUS_003**: `InvoiceDate` format must be valid ISO timestamp ('YYYY-MM-DD HH:MM:SS') and parseable; all records within same `Invoice` must share identical `InvoiceDate`
+
+---
+
+## Summary Matrix
+
+| Category | Count | Critical |
+|----------|-------|----------|
+| Null Checks | 3 | High |
+| Range Checks | 4 | Medium |
+| Uniqueness | 2 | High |
+| Referential Integrity | 3 | High |
+| Business Logic | 3 | Critical |

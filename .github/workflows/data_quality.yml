@@ -1,0 +1,19 @@
+name: Data Quality Checks
+on:
+  push:
+    branches: [ main ]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install libraries
+        run: pip install pandas anthropic
+      - name: Generate AI rules
+        run: python generate_ai_rules.py
+      - name: Run quality checks
+        run: python run_quality_checks.py
