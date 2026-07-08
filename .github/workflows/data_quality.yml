@@ -13,14 +13,5 @@ jobs:
           python-version: '3.11'
       - name: Install libraries
         run: pip install pandas anthropic
-      - name: Create test data
-        run: |
-          mkdir -p data
-          python -c "
-          import pandas as pd
-          data = {'Invoice': ['INV001','INV002','INV003'],'StockCode': ['SC001','SC002','SC003'],'Customer_ID': [101,102,103],'Country': ['UK','UK','UK'],'Quantity': [2,3,1],'Price': [10.0,20.0,15.0],'Revenue': [20.0,60.0,15.0]}
-          pd.DataFrame(data).to_csv('data/fact_sales_sample.csv', index=False)
-          print('Test data created')
-          "
       - name: Run quality checks
         run: python run_quality_checks.py

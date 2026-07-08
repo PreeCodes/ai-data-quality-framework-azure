@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('data/fact_sales_sample.csv')
+df = pd.read_csv('data/test_sample.csv')
 results = []
 
 def check(name, cond):
