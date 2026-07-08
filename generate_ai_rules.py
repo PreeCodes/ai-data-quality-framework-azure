@@ -1,9 +1,10 @@
 import anthropic
 import pandas as pd
-import json
+import json 
+import os
 
 
-client = anthropic.Anthropic(api_key='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')
+client = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
 df = pd.read_csv('data/fact_sales_sample.csv')
 
 schema = {'table': 'fact_sales', 'columns': {c: str(df[c].dtype) for c in df.columns}, 'null_counts': df.isnull().sum().to_dict(), 'row_count': len(df), 'sample_values': {c: str(df[c].dropna().head(3).tolist()) for c in list(df.columns)[:5]}}
